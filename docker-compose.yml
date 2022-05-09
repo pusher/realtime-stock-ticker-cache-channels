@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  web:
+    image: ruby:3.1
+    command: ruby app.rb
+    working_dir: /app
+    ports:
+      - "4567:4567"
+    volumes:
+      - ".:/app"
+      - bundler_gems:/usr/local/bundle/
+    environment:
+      - PUSHER_APP_ID=1383890
+      - PUSHER_KEY=523861fc50b7b96247b6
+      - PUSHER_SECRET=76480265c58bdfded61f
+      - PUSHER_CLUSTER=eu
+volumes:
+  bundler_gems:

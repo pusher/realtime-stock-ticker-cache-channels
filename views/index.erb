@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>Live Stock Prices</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+  <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true
+
+    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>', {
+      cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
+    });
+
+    var channel = pusher.subscribe('cache-stock-prices');
+    channel.bind('stock-updated', function(data) {
+      document.querySelector("#company-name").innerHTML = data.company
+      document.querySelector("#current-price").innerHTML = `${data.currency} ${data.price}`
+      document.querySelector("#percent-change").innerHTML = `${data.percent_change}%`
+      document.querySelector("#timestamp").innerHTML = data.timestamp
+    });
+
+    channel.bind('pusher:cache_miss', function() {
+      fetch('http://localhost:4567/trigger', { method: 'POST' })
+    })
+  </script>
+</head>
+
+<body>
+  <div>
+
+      <div class="grid place-items-center h-screen">
+        <div class="bg-gray-200 p-5">
+          <div class="mb-4">
+            <h1 class="text-xl" id="company-name"></h1>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm text-gray-500">Current price</p>
+            <p class="text-l" id="current-price"></p>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm text-gray-500">Percent change</p>
+            <p class="text-l" id="percent-change"></p>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm text-gray-500">Last update:</p>
+            <p class="text-l" id="timestamp"></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>

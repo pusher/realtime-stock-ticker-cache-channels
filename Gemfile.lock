@@ -1,0 +1,64 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    daemons (1.4.1)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    eventmachine (1.2.7)
+    ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    http (5.0.4)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    httpclient (2.8.3)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
+    multi_json (1.15.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    public_suffix (4.0.7)
+    pusher (2.0.2)
+      httpclient (~> 2.8)
+      multi_json (~> 1.15)
+      pusher-signature (~> 0.1.8)
+    pusher-signature (0.1.8)
+    rack (2.2.3)
+    rack-protection (2.2.0)
+      rack
+    rake (13.0.6)
+    ruby2_keywords (0.0.5)
+    sinatra (2.2.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.2.0)
+      tilt (~> 2.0)
+    thin (1.8.1)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
+    tilt (2.0.10)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  http
+  pusher
+  sinatra
+  thin
+
+BUNDLED WITH
+   2.3.7
