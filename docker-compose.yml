@@ -10,9 +10,9 @@ services:
       - ".:/app"
       - bundler_gems:/usr/local/bundle/
     environment:
-      - PUSHER_APP_ID=1383890
-      - PUSHER_KEY=523861fc50b7b96247b6
-      - PUSHER_SECRET=76480265c58bdfded61f
-      - PUSHER_CLUSTER=eu
+      - PUSHER_APP_ID=<YOUR_APP_ID>
+      - PUSHER_KEY=<YOUR_PUSHER_KEY>
+      - PUSHER_SECRET=<YOUR_PUSHER_SECRET>
+      - PUSHER_CLUSTER=<YOUR_PUSHER_CLUSTER>
 volumes:
   bundler_gems:
